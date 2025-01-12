@@ -1,0 +1,86 @@
+<main>
+    <section" class="content-section fade-in">
+        <h1>FORMER MEMBERS</h1>
+    
+        <!-- 容器自動渲染 -->
+        <div id="members-container">
+            <!-- PhD 學生 -->
+            <h2>PhD'S STUDENTS</h2>
+            <div id="phd-container"></div>
+    
+            <!-- Master 學生 -->
+            <h2>MASTER'S STUDENTS</h2>
+            <div id="master-container"></div>
+    
+            <!-- Undergraduate 學生 -->
+            <h2>UNDERGRADUATE STUDENTS</h2>
+            <div id="undergraduate-container"></div>
+        </div>
+    </section>
+    
+</main>
+
+<style>
+    main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+    .member-card {
+        gap: 100px;
+        margin-top: 50px;
+        display: flex;
+        align-items: center; /* 使圖片在父容器中垂直置中 */
+      }
+      
+      .member-photo {
+        width: 400px;
+        height: auto;
+        margin-top: 35px;
+        border-radius: 60px;
+        border: 2px solid #fff;
+        
+      }
+      
+      .member-info h2 {
+        font-size: 2rem;
+        color: #d4af7a;
+      }
+      
+      .member-name {
+        font-size: 1.5rem;
+        color: #d4af7a;
+        letter-spacing:normal;
+      }
+      
+      .member-chinese-name {
+        font-size: 2.0rem;
+        color: #bbb;
+      }
+      
+      .member-info h3 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #d4af7a;
+      }
+      
+      .member-info p, .member-info a {
+        font-size: 1rem;
+        color: #ccc;
+        line-height: 1.5;
+      }
+      
+      .member-info a {
+        text-decoration: none;
+        color: #d4af7a;
+      }
+      
+      .member-info a:hover {
+        text-decoration: underline;
+      }
+      
+      /* 每個分類的標題樣式 */
+      #phd-container, #master-container, #undergraduate-container {
+        margin-bottom: 200px;
+      }
+    </style>
