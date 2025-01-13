@@ -29,44 +29,6 @@ h1 {
   margin: 0 0;
 }
 
-@media (max-width: 768px) {
-  body {
-      padding: 10px;
-  }
-
-  /* 導覽列改為垂直堆疊 */
-  nav {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-  }
-
-  /* 主要內容區塊縮小間距 */
-  .content-section {
-      padding: 10px;
-  }
-
-  /* 縮小標題與文字大小 */
-  h1 {
-      font-size: 1.5rem;
-  }
-
-  h2 {
-      font-size: 1.2rem;
-  }
-
-  p {
-      font-size: 1rem;
-  }
-
-  /* 圖片自適應縮小 */
-  .leader-photo {
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto;
-  }
-}
-
 /* 深色背景、字體設定與先前相同 */
 [lang="zh"] { font-family: "Meiryo", sans-serif; }
 [lang="en"] { font-family: "Arial", sans-serif; }
@@ -218,7 +180,7 @@ header {
 /* 子選單的 a hover -> 字顏色變 #957B5F */
 .submenu a:hover {
   color: #957B5F; 
-  background-color: #000; /* 或者改別的顏色，以示反差 */
+  background-color: #333; /* 或者改別的顏色，以示反差 */
 }
 
 /* 滑過父選單 li 時，顯示子選單 */
@@ -270,4 +232,115 @@ footer {
   background-color: #111;
   color: #ccc;
   font-size: 0.9rem;
+}
+
+
+/* 手機模式：導覽列使用漢堡選單 */
+@media (max-width: 768px) {
+  /* Header 讓標題與Logo改為堆疊排列 */
+  header {
+    padding: 0px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .top-bar {
+    position: relative; /* 讓內部元素可用絕對定位 */
+    display: inline-block;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+  }
+  /* 隱藏 logo 與標題 */
+  .logo-container, .lab-title{
+    display: none;
+  }
+  .language-switcher {
+    top: 13px;
+    left: 24px
+  }
+  /* 導覽列隱藏，改由漢堡選單控制 */
+  .main-nav {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+  }
+
+  /* 導覽列展開 */
+  .main-nav.active {
+    display: flex;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    background-color: #000;
+    width: 50%;
+    border-top: 1px solid #000000;
+    padding: 1px 0;
+    z-index: 1000;
+    width: 180px;
+    border-radius: 10px;
+}
+  /* 連結樣式微調 */
+  .main-nav a {
+    font-size: 1rem;
+    padding: 1px;
+    display: block; /* 讓連結能夠填滿整個區塊，方便點擊 */
+    border-radius: 8px;
+    background-color: #333;
+    width: 150px;
+  }
+
+  /* 導覽列每個連結獨立一行 */
+  .main-nav li {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+  /* 開啟導覽列 */
+  .main-nav.active {
+      display: flex;
+  }
+
+  /* 導覽列選項堆疊排列 */
+  .main-nav ul {
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      width: 100%;
+      text-align: center;
+  }
+
+  /* 漢堡選單按鈕樣式 */
+  .hamburger {
+      display: block;
+      cursor: pointer;
+      padding: 0px;
+      font-size: 36px;
+      color: #fff;
+      background: none;
+      border: none;
+  }
+  /* 導覽列子選單樣式：改為下拉顯示 */
+  .submenu {
+    position: static;
+    display: none;
+    width: 100%;
+    background: #000000;
+    padding: 10px 10px;
+  }
+
+  /* 子選單每個項目獨立顯示 */
+  .submenu li {
+    margin: 5px 0;
+  }
+  /* 子選單連結樣式微調 */
+  .submenu a {
+    padding: 3px;
+    display: block;
+    background: #555;
+    color: #fff;
+    border-radius: 8px;
+}
 }

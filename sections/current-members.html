@@ -81,4 +81,66 @@ main {
   #phd-container, #master-container, #undergraduate-container {
     margin-bottom: 200px;
   }
+
+/* 手機模式優化 */
+@media (max-width: 768px) {
+h1{
+  font-size: 24px;
+}
+h2{
+  font-size: 18px;
+}
+/* 主內容區最大寬度自適應，確保可讀性 */
+main {
+    padding: 5px;
+    max-width: 95%;
+}
+
+/* 成員卡片垂直堆疊 */
+.member-card {
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+    margin-top: 0px;
+}
+
+/* 成員照片縮小 */
+.member-photo {
+    width: 100%;
+    max-width: 160px;
+    border-radius: 40px;
+    margin-top: 0px;
+}
+
+/* 文字資訊置中 */
+.member-info {
+    text-align: left;
+    padding: 0 0;
+    max-width: 95%;
+}
+
+/* 標題與字體縮小 */
+.member-info h2 {
+    font-size: 1.2rem;
+}
+
+.member-name {
+    font-size: 1.2rem;
+}
+
+.member-chinese-name {
+    font-size: 1.2rem;
+}
+
+/* 列表與段落字體縮小 */
+.member-info p {
+    font-size: 1.1rem;
+}
+
+/* 調整每個成員分類區塊的間距 */
+#phd-container, #master-container, #undergraduate-container {
+    margin-bottom: 100px;
+}
+}
+
 </style>

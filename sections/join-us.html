@@ -1,5 +1,7 @@
 <main>
     <section* class="content-section fade-in">
+        <h2 lang="zh">加入我們</h2>
+        <h2 lang="en">Join us</h2>
         <p lang="zh"><span class="emoji">🔬</span> 我們的實驗室誠徵對於<strong>超穎介面與光學設計</strong>感興趣的同學加入研究團隊，共同探索前沿光學與奈米技術領域。</p>
         <p lang="en"><span class="emoji">🔬</span> Our laboratory is seeking highly motivated students interested in <strong>metasurfaces</strong> and <strong>optical design</strong> to join our research team and explore cutting-edge topics in optics and nanotechnology.</p>
 
@@ -42,6 +44,10 @@
     margin: 0 auto;
     padding: 0px;
     }
+    h2 {
+        font-size: 36px;
+        text-align: center;
+    }
     h3 {
         border-bottom: 2px solid #ffffff;
         padding-bottom: 5px;
@@ -68,5 +74,42 @@
     .emoji {
         font-size: 1em;
     }
+    @media (max-width: 768px){
+        main{
+            max-width: 90%;
+        }
+        h2 {
+            font-size: 24px;
+            text-align: center;
+        }
+        h3 {
+            border-bottom: 0px solid #ffffff;
+            padding-bottom: 0px;
+            color: #d4af7a;
+            text-align: justify;
+        }
 
+        p {
+            font-size: 14px;
+            text-align: justify;
+        }
+
+        a {
+            color: #64B5F6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #81C784;
+        }
+
+        .emoji {
+            font-size: 1em;
+        }
+        
+    }
 </style>

@@ -10,11 +10,7 @@
 </main>
 
 <style>
-html, body {
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    color: #ffffff;
-}
+
 .pubwrap {
     padding-bottom: 30px;
     margin-bottom: 50px;
@@ -76,5 +72,58 @@ html, body {
 }
 .publ li a:hover {
     color: #ffffff; /* 滑鼠懸停時變成白色 */
+}
+/* 手機模式優化 */
+@media (max-width: 768px) {
+h1 {
+   font-size: 24px; 
+}
+/* 調整容器的邊距，適應小螢幕 */
+.container {
+    padding: 0px;
+}
+
+/* 使文章區塊更適合小螢幕 */
+.pubwrap {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-right: 5vw;
+    margin-left: 5vw;
+}
+
+/* 將行內容垂直排列，以便更適合小螢幕 */
+.row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 30px;
+}
+
+/* 將圖片縮小，適應手機螢幕 */
+.pubimg img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* 標題與文字大小縮小 */
+.pubt {
+    font-size: 20px;
+}
+
+.pubg {
+    font-size: 12px;
+}
+
+.pubd {
+    font-size: 14px;
+}
+
+/* 按鈕縮小且間距調整 */
+.publ li {
+    padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+}
 }
 </style>

@@ -58,4 +58,65 @@
     .leader-info a:hover {
       text-decoration: underline;
     }
+
+    /* 手機模式：768px 以下的優化 */
+@media (max-width: 768px) {
+  p{
+    font-size: 14px;
+    text-align: left;
+  }
+  h1{
+  font-size: 24px;
+}
+
+  h3{
+  font-size: 18px;
+  text-align: left;
+}
+/* 領導者資訊容器改為垂直堆疊 */
+.leader-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px; /* 縮小間距 */
+    margin-top: 20px;
+}
+
+/* 照片縮小 */
+.leader-photo {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 50px;
+}
+
+/* 文字資訊置中 */
+.leader-info {
+    text-align: center;
+    padding: 0 10px;
+    max-width: 90%;
+}
+
+/* 標題與字體縮小 */
+.leader-info h2 {
+    font-size: 1.2rem;
+}
+
+.leader-name {
+    font-size: 1.2rem;
+}
+
+.leader-chinese-name {
+    font-size: 1.2rem;
+}
+
+/* 列表樣式調整 */
+.leader-info ul {
+    text-align: left;
+}
+
+/* 縮小字體，確保易讀性 */
+.leader-info li {
+    font-size: 16px;
+    text-align: left;
+}
+}
     </style>
