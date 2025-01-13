@@ -387,5 +387,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ✅ 預設載入首頁
 window.onload = () => {
-    loadSection('join-us');
+    loadSection('home');
 };

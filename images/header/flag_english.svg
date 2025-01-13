@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-gb" viewBox="0 0 640 480">
-  <path fill="#012169" d="M0 0h640v480H0z"/>
-  <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/>
-  <path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/>
-  <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/>
-  <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"/>
-</svg>
+<svg width="282" height="121" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-4509 -849)"><path d="M4559 868.834C4559 857.88 4567.88 849 4578.83 849L4721.17 849C4732.12 849 4741 857.88 4741 868.834L4741 948.166C4741 959.12 4732.12 968 4721.17 968L4578.83 968C4567.88 968 4559 959.12 4559 948.166Z" fill-rule="evenodd"/><text fill="#FFFFFF" font-family="Arial,Arial_MSFontService,sans-serif" font-weight="700" font-size="55" transform="matrix(1 0 0 1 4550.24 924)">English</text></g></svg>

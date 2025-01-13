@@ -61,24 +61,29 @@ header {
   margin-top: 0px;
   align-items: flex-end; /* 使圖片在父容器中垂直置中 */
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(50%, -50%);
 }
 
 .lab-logo {
-  width: auto;
+  width: 300px;
   height: auto;
+  top: 0px;
+  left: 0px;
   border-radius: 10px;
 }
 
 /* 領導者資訊區域 */
 .lab-title {
   font-size: 20px;
-  width: 600px;
+  width: 500px;
   text-align: left; /* 文字水平向左對齊 */
   align-items: flex-start; /* 保持原本的垂直對齊設定 */
   color: #fff;
+  position: absolute;
+  top: 40px;
+  left: 250px;
 }
 /* -------------------------------------
    語言切換 / 其他功能區 (略)
@@ -89,16 +94,16 @@ header {
   justify-content: flex-start; /* 將內容對齊到最左側 */
   position: absolute;          /* 如果需要絕對定位在視窗最左側 */
   left: 0;                     /* 靠齊最左邊 */
-  padding-left: 10px;          /* 可根據需要調整內邊距 */
+  padding-left: 8px;          /* 可根據需要調整內邊距 */
   padding-top: 8px;          /* 可根據需要調整內邊距 */
 }
 
 
 /* 國旗切換 icon，給予大小與簡易動態效果 */
 .flag-icon {
-  width: 30px;    /* icon 寬高可自行調整 */
+  width: 53px;    /* icon 寬高可自行調整 */
   height: 30px;
-  margin-left: 10px;
+  margin-left: 20px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
