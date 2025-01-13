@@ -1,0 +1,147 @@
+<main>
+    <section" class="content-section fade-in">
+        <h1 lang="en">MEMBERS</h1>
+        <h1 lang="zh">成員</h1>
+        <!-- 容器自動渲染 -->
+        <div id="members-container">
+            <!-- PhD 學生 -->
+            <h2>PhD'S STUDENTS</h2>
+            <div id="phd-container"></div>
+    
+            <!-- Master 學生 -->
+            <h2>MASTER'S STUDENTS</h2>
+            <div id="master-container"></div>
+    
+            <!-- Undergraduate 學生 -->
+            <h2>UNDERGRADUATE STUDENTS</h2>
+            <div id="undergraduate-container"></div>
+        </div>
+    </section>
+</main>
+<style>
+    /* 主內容區 */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.member-card {
+    gap: 100px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center; /* 使圖片在父容器中垂直置中 */
+  }
+  
+  .member-photo {
+    width: 400px;
+    height: auto;
+    margin-top: 35px;
+    border-radius: 60px;
+    border: 2px solid #fff;
+    
+  }
+  
+  .member-info h2 {
+    font-size: 2rem;
+    color: #d4af7a;
+  }
+  
+  .member-name {
+    font-size: 1.5rem;
+    color: #d4af7a;
+    letter-spacing:normal;
+  }
+  
+  .member-chinese-name {
+    font-size: 2.0rem;
+    color: #bbb;
+  }
+  
+  .member-info h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d4af7a;
+  }
+  
+  .member-info p, .member-info a {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  
+  .member-info a {
+    text-decoration: none;
+    color: #d4af7a;
+  }
+  
+  .member-info a:hover {
+    text-decoration: underline;
+  }
+  
+  /* 每個分類的標題樣式 */
+  #phd-container, #master-container, #undergraduate-container {
+    margin-bottom: 200px;
+  }
+
+/* 手機模式優化 */
+@media (max-width: 768px) {
+h1{
+  font-size: 24px;
+}
+h2{
+  font-size: 18px;
+}
+/* 主內容區最大寬度自適應，確保可讀性 */
+main {
+    padding: 5px;
+    max-width: 95%;
+}
+
+/* 成員卡片垂直堆疊 */
+.member-card {
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+    margin-top: 0px;
+}
+
+/* 成員照片縮小 */
+.member-photo {
+    width: 100%;
+    max-width: 160px;
+    border-radius: 40px;
+    margin-top: 0px;
+}
+
+/* 文字資訊置中 */
+.member-info {
+    text-align: left;
+    padding: 0 0;
+    max-width: 95%;
+}
+
+/* 標題與字體縮小 */
+.member-info h2 {
+    font-size: 1.2rem;
+}
+
+.member-name {
+    font-size: 1.2rem;
+}
+
+.member-chinese-name {
+    font-size: 1.2rem;
+}
+
+/* 列表與段落字體縮小 */
+.member-info p {
+    font-size: 1.1rem;
+}
+
+/* 調整每個成員分類區塊的間距 */
+#phd-container, #master-container, #undergraduate-container {
+    margin-bottom: 100px;
+}
+}
+
+</style>
