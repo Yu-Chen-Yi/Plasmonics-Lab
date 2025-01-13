@@ -51,6 +51,9 @@ function loadSection(sectionName) {
             else if (sectionName === 'projects'){
                 loadProjects();         // 自動載入 Projects
             }
+            else if (sectionName === 'news'){
+                loadAwards();
+            }
         })
         .catch(error => {
             console.error('載入內容失敗:', error);
@@ -109,7 +112,6 @@ async function loadAdvisorProfessor() {
         advisorContainer.innerHTML = `<p style="color: red;">無法載入教授資訊</p>`;
     }
 }
-
 // ✅ 自動載入 Current Members (與 Former Members 分開)
 async function loadCurrentMembers() {
     const categories = ["phd", "master", "undergraduate"];
@@ -374,6 +376,48 @@ async function loadProjects() {
     }
 }
 
+function loadAwards() {
+    const container = document.getElementById('news-container');
+    container.innerHTML = ''; // 清空現有內容
+
+    fetch('awards.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('無法載入新聞資料');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const newsData = data.news;
+            newsData.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('news-card');
+
+                // 如果有圖片
+                if (item.image) {
+                    card.innerHTML = `
+                        <div class="news-image">
+                            <img src="${item.image}" alt="${item.text}" onerror="this.src='images/awards/default-placeholder.png';">
+                        </div>
+                        <h3 class="news-title">${item.text}</h3>
+                        <p class="news-date">日期: ${item.date}</p>
+                    `;
+                } else { // 沒有圖片的處理
+                    card.classList.add('no-image');
+                    card.innerHTML = `
+                        <h3 class="news-title">${item.text}</h3>
+                        <p class="news-date">日期: ${item.date}</p>
+                    `;
+                }
+                container.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('載入新聞資料失敗:', error);
+            container.innerHTML = `<p style="color: red;">無法載入新聞資料，請稍後再試。</p>`;
+        });
+}
+
 // ✅ 綁定導覽列的點擊事件，並動態載入對應頁面
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[data-section]').forEach(link => {
@@ -387,5 +431,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ✅ 預設載入首頁
 window.onload = () => {
-    loadSection('home');
+    loadSection('news');
 };

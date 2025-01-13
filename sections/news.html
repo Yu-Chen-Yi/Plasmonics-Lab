@@ -1,6 +1,141 @@
 <main>
-    <section" class="content-section fade-in">
-        <h2 lang="zh">CMOS感光元件</h2>
-        <p lang="zh">這裡專注於奈米尺度光學、光子結構、超材料等領域...</p>
+    <section* class="content-section fade-in">
+        <div class="container">
+            <h1 lang="en">News</h1> 
+            <h1 lang="zh">最新消息</h1>
+            <div id="news-container">
+                <!-- JavaScript 會自動渲染 -->
+            </div>
+        </div>
     </section>
-</main>
+  </main>
+  <style>
+  .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+  
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        color: #ffffff;
+    }
+  
+    /* ========== 卡片樣式 ========== */
+    #news-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+  
+    .news-card {
+        border: 1px solid #dddddd8c;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.158);
+        flex: 1 1 calc(33.33% - 20px);
+        max-width: 350px;
+        transition: transform 0.2s ease-in-out;
+    }
+  
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+  
+    .news-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+        max-height: 200px;
+    }
+  
+    .news-title {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+  
+    .news-date {
+        font-size: 14px;
+        color: #ffffff;
+    }
+  
+    .no-image {
+        border-left: 4px solid #88765c;
+        background: rgba(0,0,0,0.15);
+        padding: 16px;
+        border-radius: 12px;
+    }
+    @media (max-width: 768px){
+        .container {
+        max-width: 768px;
+        margin: 0 auto;
+        padding: 0px;
+    }
+  
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #ffffff;
+    }
+  
+    /* ========== 卡片樣式 ========== */
+    #news-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+  
+    .news-card {
+        border: 1px solid #dddddd8c;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.158);
+        flex: 1 1 calc(33.33% - 20px);
+        max-width: 200px;
+        transition: transform 0.2s ease-in-out;
+    }
+  
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+  
+    .news-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+        max-height: 100px;
+    }
+  
+    .news-title {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+  
+    .news-date {
+        font-size: 14px;
+        color: #ffffff;
+    }
+  
+    .no-image {
+        border-left: 4px solid #88765c;
+        background: rgba(0,0,0,0.15);
+        padding: 16px;
+        border-radius: 12px;
+    }
+    }
+  </style>
