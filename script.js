@@ -67,7 +67,7 @@ async function loadAdvisorProfessor() {
 
     try {
         // ✅ 載入 JSON 資料
-        const response = await fetch('/images/advisor-professor/data.json');
+        const response = await fetch('images/advisor-professor/data.json');
         const data = await response.json();
 
         // ✅ 處理多行教育與經歷
