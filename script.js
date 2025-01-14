@@ -79,7 +79,7 @@ async function loadAdvisorProfessor() {
             <div class="group-leader">
                 <div class="leader-container">
                     <!-- Leader's Photo -->
-                    <img src="/images/advisor-professor/CMW.jpg" alt="Group Leader Photo" class="leader-photo">
+                    <img src="images/advisor-professor/CMW.jpg" alt="Group Leader Photo" class="leader-photo">
                     <!-- Leader's Personal Information -->
                     <div class="leader-info">
                         <h2 class="leader-name">${data.name} <span class="leader-chinese-name">/ ${data.chinese_name}</span></h2>
