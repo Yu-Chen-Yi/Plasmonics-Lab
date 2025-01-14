@@ -112,172 +112,103 @@ async function loadAdvisorProfessor() {
         advisorContainer.innerHTML = `<p style="color: red;">無法載入教授資訊</p>`;
     }
 }
+
 // ✅ 自動載入 Current Members (與 Former Members 分開)
 async function loadCurrentMembers() {
-    const categories = ["phd", "master", "undergraduate"];
-    const membersContainer = {
-        phd: document.getElementById('phd-container'),
-        master: document.getElementById('master-container'),
-        undergraduate: document.getElementById('undergraduate-container')
-    };
+    fetch('current-members.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('members-container');
+            container.innerHTML = ''; // Clear previous content if any
 
-    for (const category of categories) {
-        const memberNames = await fetch(`/current-members.json`).then(res => res.json()).then(data => data[category] || []);
-        membersContainer[category].innerHTML = '';
+            data.forEach((member, index) => {
+                const cardHTML = `
+                    <div class="card" data-id="modal${index}" onclick="openmemberModal('modal${index}')">
+                        <div class="profile">
+                            <img src="${member.url}" alt="${member.name_en}">
+                            <h2>${member.name_zh}</h2>
+                            <h3>${member.name_en}</h3>
+     
+                            <h1 lang="zh"><strong>研究:</strong> ${member.research_interests_zh}</h1>
+                            <p lang="en"><strong>Research:</strong> ${member.research_interests_en}</p>
+                        </div>
+                    </div>
 
-        for (const name of memberNames) {
-            try {
-                // ✅ 自動偵測圖片格式
-                const imageExtensions = ["png", "jpg", "jpeg"];
-                let profileImage = "";
-                
-                for (const ext of imageExtensions) {
-                    const testPath = `/images/current-members/${category}/${name}/Profile.${ext}`;
-                    const imageExists = await fetch(testPath, { method: 'HEAD' });
-                    if (imageExists.ok) {
-                        profileImage = testPath;
-                        break;
-                    }
-                }
-
-                // ✅ 預設圖片
-                if (!profileImage) {
-                    profileImage = `/images/default-profile.png`;
-                }
-
-                // ✅ 讀取 JSON 格式成員資料
-                const memberData = await fetch(`/images/current-members/${category}/${name}/data.json`).then(res => res.json());
-                
-                // ✅ 處理多行 education (如果是陣列則分行顯示)
-                const educationContent = Array.isArray(memberData.education) 
-                    ? memberData.education.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.education}</li>`;
-                const educationTWContent = Array.isArray(memberData.education_TW) 
-                    ? memberData.education_TW.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.education_TW}</li>`;
-                // ✅ 處理多行 research (如果是陣列則分行顯示)
-                const researchContent = Array.isArray(memberData.research) 
-                    ? memberData.research.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.research}</li>`;
-                // ✅ 處理多行 research (如果是陣列則分行顯示)
-                const researchTWContent = Array.isArray(memberData.research_TW) 
-                    ? memberData.research_TW.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.research_TW}</li>`;
-                    // ✅ 動態生成成員卡片 (支持多行)
-                const memberHTML = `
-                    <div class="member-card">
-                        <img src="${profileImage}" class="member-photo">
-                        <div class="member-info">
-                            
-                            <h2 class="member-info">${memberData.name} <span class="leader-chinese-name">/ ${memberData.chinese_name}</span></h2>
-                            <!-- 英文區塊 -->
-                            <p lang="en"><strong>Education:</strong></p>
-                            <ul lang="en">${educationContent}</ul>
-                            <p lang="en"><strong>Research</strong></p>
-                            <ul lang="en">${researchContent}</ul>
-                    
-
-                            <!-- 中文區塊 -->
-                            <p lang="zh"><strong>學歷:</strong></p>
-                            <ul lang="zh">${educationTWContent}</ul>
-                            <p lang="zh"><strong>研究:</strong></p>
-                            <ul lang="zh">${researchTWContent}</ul>
-
-                            <!-- Email (通用) -->
-                            <p><strong>Email:</strong> <a href="mailto:${memberData.email}">${memberData.email}</a></p>
+                    <div class="modal" id="modal${index}">
+                        <span class="close" onclick="closememberModal('modal${index}')">&times;</span>
+                        <div class="modal-content">
+                            <img src="${member.url}" alt="${member.name_en}">
+                            <h2>${member.name_zh} (${member.name_en})</h2>
+                            <h1 lang= "zh"><strong>身分:</strong> ${member.degree_zh}</h1>
+                            <p lang= "en"><strong>Degree:</strong> ${member.degree_en}</p>
+                            <h1 lang= "zh"><strong>入學年度:</strong> ${member.year_of_enrollment_zh}</h1>
+                            <p lang= "en"><strong>Admission Year:</strong> ${member.year_of_enrollment_en}</p>
+                            <h1 lang= "zh"><strong>畢業學校:</strong> ${member.school_zh}</h1>
+                            <p lang= "en"><strong>Education:</strong> ${member.school_en}</p>
+                            <h1 lang= "zh"><strong>技能:</strong> ${member.skills_zh}</h1>
+                            <p lang= "en"><strong>Skill:</strong> ${member.skills_en}</p>
+                            <h1 lang= "zh"><strong>研究:</strong> ${member.research_interests_zh}</h1>
+                            <p lang= "en"><strong>Research:</strong><br>${member.research_interests_en}</p>
+                            <p><strong>Email:</strong> <a href="mailto:${member.email}">${member.email}</a></p>
+                        </div>
+                        <div class="radar-chart">
+                            <img src="images/radar/${member.name_zh}.png" alt="雷達圖">
                         </div>
                     </div>
                 `;
-                membersContainer[category].innerHTML += memberHTML;
-
-            } catch (error) {
-                console.error(`無法載入 ${name} 的資料`, error);
-            }
-        }
-    }
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        })
+        .catch(error => console.error('Error loading members:', error));
 }
 
+// ✅ 自動載入 Former Members (與 Former Members 分開)
 async function loadFormerMembers() {
-    const categories = ["phd", "master", "undergraduate"];
-    const membersContainer = {
-        phd: document.getElementById('phd-container'),
-        master: document.getElementById('master-container'),
-        undergraduate: document.getElementById('undergraduate-container')
-    };
+    fetch('former-members.json')
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById('members-container');
+        container.innerHTML = ''; // Clear previous content if any
 
-    for (const category of categories) {
-        const memberNames = await fetch(`/former-members.json`).then(res => res.json()).then(data => data[category] || []);
-        membersContainer[category].innerHTML = '';
-
-        for (const name of memberNames) {
-            try {
-                // ✅ 自動偵測圖片格式
-                const imageExtensions = ["png", "jpg", "jpeg"];
-                let profileImage = "";
-                
-                for (const ext of imageExtensions) {
-                    const testPath = `/images/former-members/${category}/${name}/Profile.${ext}`;
-                    const imageExists = await fetch(testPath, { method: 'HEAD' });
-                    if (imageExists.ok) {
-                        profileImage = testPath;
-                        break;
-                    }
-                }
-
-                // ✅ 預設圖片
-                if (!profileImage) {
-                    profileImage = `/images/default-profile.png`;
-                }
-
-                // ✅ 讀取 JSON 格式成員資料
-                const memberData = await fetch(`/images/former-members/${category}/${name}/data.json`).then(res => res.json());
-                
-                // ✅ 處理多行 education (如果是陣列則分行顯示)
-                const educationContent = Array.isArray(memberData.education) 
-                    ? memberData.education.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.education}</li>`;
-                const educationTWContent = Array.isArray(memberData.education_TW) 
-                    ? memberData.education_TW.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.education_TW}</li>`;
-                // ✅ 處理多行 research (如果是陣列則分行顯示)
-                const researchContent = Array.isArray(memberData.research) 
-                    ? memberData.research.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.research}</li>`;
-                // ✅ 處理多行 research (如果是陣列則分行顯示)
-                const researchTWContent = Array.isArray(memberData.research_TW) 
-                    ? memberData.research_TW.map(line => `<li>${line}</li>`).join('') 
-                    : `<li>${memberData.research_TW}</li>`;
-                    // ✅ 動態生成成員卡片 (支持多行)
-                const memberHTML = `
-                    <div class="member-card">
-                        <img src="${profileImage}" class="member-photo">
-                        <div class="member-info">
-                            <h3 class="member-name">${memberData.name} <span class="member-chinese-name">/ ${memberData.chinese_name}</span></h2>
-                            <!-- 英文區塊 -->
-                            <p lang="en"><strong>Education:</strong></p>
-                            <ul lang="en">${educationContent}</ul>
-                            <p lang="en"><strong>Research</strong></p>
-                            <ul lang="en">${researchContent}</ul>
-                    
-
-                            <!-- 中文區塊 -->
-                            <p lang="zh"><strong>學歷:</strong></p>
-                            <ul lang="zh">${educationTWContent}</ul>
-                            <p lang="zh"><strong>研究:</strong></p>
-                            <ul lang="zh">${researchTWContent}</ul>
-
-                            <!-- Email (通用) -->
-                            <p><strong>Email:</strong> <a href="mailto:${memberData.email}">${memberData.email}</a></p>
-                        </div>
+        data.forEach((member, index) => {
+            const cardHTML = `
+                <div class="card" data-id="modal${index}" onclick="openmemberModal('modal${index}')">
+                    <div class="profile">
+                        <img src="${member.url}" alt="${member.name_en}">
+                        <h2>${member.name_zh}</h2>
+                        <h3>${member.name_en}</h2>
+ 
+                        <h1 lang="zh"><strong>現職:</strong><br>${member.current_employment_zh}</h1>
+                        <p lang="en"><strong>Current Job:</strong> ${member.current_employment_en}</p>
                     </div>
-                `;
-                membersContainer[category].innerHTML += memberHTML;
+                </div>
 
-            } catch (error) {
-                console.error(`無法載入 ${name} 的資料`, error);
-            }
-        }
-    }
+                <div class="modal" id="modal${index}">
+                    <span class="close" onclick="closememberModal('modal${index}')">&times;</span>
+                    <div class="modal-content">
+                        <img src="${member.url}" alt="${member.name_en}">
+                        <h2>${member.name_zh} (${member.name_en})</h2>
+                        <h1 lang="zh"><strong>現職:</strong><br>${member.current_employment_zh}</h1>
+                        <p lang="en"><strong>Current Job:</strong><br>${member.current_employment_en}</p>
+                        <h1 lang= "zh"><strong>入學年度:</strong> ${member.year_of_enrollment_zh}</h1>
+                        <p lang= "en"><strong>Admission Year:</strong> ${member.year_of_enrollment_en}</p>
+                        <h1 lang= "zh"><strong>畢業學校:</strong> ${member.school_zh}</h1>
+                        <p lang= "en"><strong>Education:</strong> ${member.school_en}</p>
+                        <h1 lang= "zh"><strong>技能:</strong> ${member.skills_zh}</h1>
+                        <p lang= "en"><strong>Skill:</strong> ${member.skills_en}</p>
+                        <h1 lang= "zh"><strong>研究:</strong> ${member.research_interests_zh}</h1>
+                        <p lang= "en"><strong>Research:</strong><br>${member.research_interests_en}</p>
+                        <p><strong>Email:</strong> <a href="mailto:${member.email}">${member.email}</a></p>
+                    </div>
+                    <div class="radar-chart">
+                        <img src="images/radar/${member.name_zh}.png" alt="雷達圖">
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', cardHTML);
+        });
+    })
+    .catch(error => console.error('Error loading members:', error));
 }
 
 async function loadpublications() {
@@ -376,7 +307,7 @@ async function loadProjects() {
     }
 }
 
-function loadAwards() {
+async function loadAwards() {
     const container = document.getElementById('news-container');
     container.innerHTML = ''; // 清空現有內容
 
@@ -396,8 +327,8 @@ function loadAwards() {
                 // 如果有圖片
                 if (item.image) {
                     card.innerHTML = `
-                        <div class="news-image">
-                            <img src="${item.image}" alt="${item.text}" onerror="this.src='images/awards/default-placeholder.png';">
+                        <div class="news-image" onclick="openModal('${item.image}')">
+                            <img src="${item.image}" alt="${item.text}">
                         </div>
                         <h3 class="news-title">${item.text}</h3>
                         <p class="news-date">日期: ${item.date}</p>
@@ -414,9 +345,61 @@ function loadAwards() {
         })
         .catch(error => {
             console.error('載入新聞資料失敗:', error);
-            container.innerHTML = `<p style="color: red;">無法載入新聞資料，請稍後再試。</p>`;
+            container.innerHTML = `<p class="error-message">無法載入新聞資料，請稍後再試。</p>`;
         });
 }
+
+function openmemberModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+
+    document.addEventListener('keydown', function escHandler(event) {
+        if (event.key === "Escape") {
+            closememberModal(modalId);
+            document.removeEventListener('keydown', escHandler);
+        }
+    });
+}
+
+function closememberModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 500);
+}
+
+// 開啟模態框並顯示放大圖片
+function openModal(imageSrc) {
+    const modal = document.getElementById('myModal');
+    const modalImg = document.getElementById('modalImg');
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+}
+
+// 關閉模態框
+function closeModal() {
+    document.getElementById('myModal').style.display = "none";
+}
+
+// 點擊圖片外部關閉模態框
+window.onclick = function(event) {
+    const modal = document.getElementById('myModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+
+// 使用鍵盤 ESC 鍵關閉模態框
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
 
 // ✅ 綁定導覽列的點擊事件，並動態載入對應頁面
 document.addEventListener('DOMContentLoaded', () => {
@@ -429,7 +412,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
 // ✅ 預設載入首頁
 window.onload = () => {
-    loadSection('home');
+    loadSection('current-members');
 };

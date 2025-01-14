@@ -1,149 +1,302 @@
 <main>
-    <section" class="content-section fade-in">
-        <h1 lang="en">GRADUATE</h1>
-        <h1 lang="zh">畢業生</h1>
+  <section* class="content-section fade-in">
+      <h1 lang="en">Graduate</h1>
+      <h1 lang="zh">畢業生</h1>
+      <div class="container">
         <!-- 容器自動渲染 -->
         <div id="members-container">
-            <!-- PhD 學生 -->
-            <h2>PhD'S STUDENTS</h2>
-            <div id="phd-container"></div>
-    
-            <!-- Master 學生 -->
-            <h2>MASTER'S STUDENTS</h2>
-            <div id="master-container"></div>
-    
-            <!-- Undergraduate 學生 -->
-            <h2>UNDERGRADUATE STUDENTS</h2>
-            <div id="undergraduate-container"></div>
         </div>
-    </section>
-    
+    </div>
+  </section>
 </main>
-
 <style>
-  /* 主內容區 */
-main {
-max-width: 1000px;
-margin: 0 auto;
-padding: 20px;
-}
-.member-card {
-  gap: 100px;
-  margin-top: 50px;
-  display: flex;
-  align-items: center; /* 使圖片在父容器中垂直置中 */
+#members-container {
+display: flex;
+flex-wrap: wrap;
+justify-content:center;
+gap: 50px;
+padding: 50px;
+
 }
 
-.member-photo {
-  width: 400px;
-  height: auto;
-  margin-top: 35px;
-  border-radius: 60px;
-  border: 2px solid #fff;
+.card {
+    display: flex;
+    background-color: #111;
+    border-radius: 15%;
+    padding: 10px 20px;
+    width: 200px !important;
+    box-shadow: 0 0 10px #d4af7a;
+    cursor: pointer;
+
+}
+
+.profile {
+    text-align: center !important;
+    justify-content: center ;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile img {
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
+    object-position: center; /* 確保圖片從中心裁剪 */
+}
+
+.profile p {
+    text-align: left;
+    font-size: 16px;
+}
+
+.profile h1 {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 6px; /* 設定文字間距為 2px */
+}
+/* modal 樣式 - 預設隱藏並準備動畫 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+    background-color: #111;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.modal p {
+    text-align: left;
+    font-size: 14px;
+}
+
+.modal h1 {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 6px; /* 設定文字間距為 2px */
+}
+
+.modal h1 {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 6px; /* 設定文字間距為 2px */
+}
+
+/* modal 開啟時的動畫 */
+.modal.show {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 關閉時觸發滑出 */
+.modal.hide {
+    animation: slideOut 0.5s ease-out forwards;
+}
+
   
+
+.modal-content {
+    text-align: left;
+    max-width: 400px;
+    padding-right: 20px;
 }
 
-.member-info h2 {
-  font-size: 2rem;
-  color: #d4af7a;
+.modal-content img {
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    width: 240px;
+    height: 240px;
+    object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
+    object-position: center; /* 確保圖片從中心裁剪 */
 }
 
-.member-name {
-  font-size: 1.5rem;
-  color: #d4af7a;
-  letter-spacing:normal;
+.modal-content h1{
+      text-align: left;
+      margin: 5px 0;
+      font-size: 14px;
+  }
+
+  .modal-content p {
+      text-align: left;
+      margin: 10px 3px;
+  }
+
+.radar-chart img {
+    max-width: 400px;
 }
 
-.member-chinese-name {
-  font-size: 2.0rem;
-  color: #bbb;
+a {
+    color: #4fd1c5;
+    text-decoration: none;
 }
 
-.member-info h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #d4af7a;
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
 }
 
-.member-info p, .member-info a {
-  font-size: 1rem;
-  color: #ccc;
-  line-height: 1.5;
+@media (max-width: 768px){
+  #members-container {
+display: flex;
+flex-wrap: wrap;
+justify-content:center;
+gap: 20px;
+padding: 20px;
+
 }
 
-.member-info a {
-  text-decoration: none;
-  color: #d4af7a;
+.card {
+    display: flex;
+    background-color: #111;
+    border-radius: 15%;
+    padding: 10px 20px;
+    width: 100px !important;
+    height: auto !important;
+    box-shadow: 0 0 7px #d4af7a;
+    cursor: pointer;
+
 }
 
-.member-info a:hover {
-  text-decoration: underline;
+.profile {
+    text-align: center !important;
+    justify-content: center ;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* 每個分類的標題樣式 */
-#phd-container, #master-container, #undergraduate-container {
-  margin-bottom: 200px;
+.profile img {
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
+    object-position: center; /* 確保圖片從中心裁剪 */
 }
 
-/* 手機模式優化 */
-@media (max-width: 768px) {
-h1{
-font-size: 24px;
-}
-h2{
-font-size: 18px;
-}
-/* 主內容區最大寬度自適應，確保可讀性 */
-main {
-  padding: 5px;
-  max-width: 95%;
+.profile p {
+    text-align: left;
+    font-size: 12px;
+    display: none !important;
 }
 
-/* 成員卡片垂直堆疊 */
-.member-card {
-  flex-direction: column;
+.profile h1 {
+  display: none !important;
   text-align: left;
-  gap: 5px;
-  margin-top: 0px;
+  font-size: 12px;
+  letter-spacing: 1px; /* 設定文字間距為 2px */
 }
-
-/* 成員照片縮小 */
-.member-photo {
-  width: 100%;
-  max-width: 160px;
-  border-radius: 40px;
-  margin-top: 0px;
-}
-
-/* 文字資訊置中 */
-.member-info {
+.profile h2 {
   text-align: left;
-  padding: 0 0;
-  max-width: 95%;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 8px; /* 設定文字間距為 2px */
+}
+.profile h3 {
+  text-align: left;
+  font-size: 12px;
+  text-align: center;
 }
 
-/* 標題與字體縮小 */
-.member-info h2 {
-  font-size: 1.2rem;
+/* modal 樣式 - 預設隱藏並準備動畫 */
+.modal {
+  display: flex;
+  flex-wrap: wrap; /* 內容超出寬度自動換行 */
+  align-items: flex-start; /* 對齊到上方 */
+  gap: 0px; /* 元素間間距 */
+  left: 50%;
+  top: 53%;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  }
+.modal p {
+    text-align: left;
+    font-size: 14px;
 }
 
-.member-name {
-  font-size: 1.2rem;
+.modal h1 {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 6px; /* 設定文字間距為 2px */
+}
+.modal h2 {
+    text-align: left;
+    font-size: 16px;
+}
+/* modal 開啟時的動畫 */
+.modal.show {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.member-chinese-name {
-  font-size: 1.2rem;
+/* 關閉時觸發滑出 */
+.modal.hide {
+    animation: slideOut 0.5s ease-out forwards;
 }
 
-/* 列表與段落字體縮小 */
-.member-info p {
-  font-size: 1.1rem;
+.modal-content {
+  flex: 1; /* 文字區域自適應寬度 */
+  min-width: 300px; /* 設定最小寬度，防止擠壓 */
+}
+  .modal-content h1{
+      text-align: left;
+      margin: 5px 0;
+      font-size: 14px;
+  }
+
+  .modal-content p {
+      text-align: left;
+      margin: 5px 0;
+  }
+  
+  .modal-content img {
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
+    object-position: center; /* 確保圖片從中心裁剪 */
+   }
+  .radar-chart {
+  width: 100%; /* 讓雷達圖置中 */
+  text-align: center;
+  margin-top: 0px;
+  }
+  .radar-chart img {
+  max-width: 200px;
+  margin-top: 20px;
+  }
+a {
+    color: #4fd1c5;
+    text-decoration: none;
 }
 
-/* 調整每個成員分類區塊的間距 */
-#phd-container, #master-container, #undergraduate-container {
-  margin-bottom: 100px;
-}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
 }
 
+}
 </style>

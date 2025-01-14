@@ -1,11 +1,21 @@
-{
-    "master": [
-        "Himmel"
-    ],
-    "phd": [
-        "Frieren"
-    ],
-    "undergraduate": [
-        "Aura"
-    ]
-}
+[
+    {
+        "name_zh": "林榮勝",
+        "name_en": "Rong Sheng Lin",
+        "year_of_enrollment_zh": 109,
+        "year_of_enrollment_en": 2020,
+        "degree_zh": "碩士生",
+        "degree_en": "Graduate Student",
+        "graduated": true,
+        "school_zh": "中央大學 光電所",
+        "school_en": "National Central University, Graduate Institute of Optical Sciences and Engineering",
+        "skills_zh": "FDTD, 乾蝕刻製程, 黃光顯影",
+        "skills_en": "FDTD, Dry etching process, Photolithography",
+        "research_interests_zh": "應用於感光元件之超穎介面",
+        "research_interests_en": "Metasurface based CMOS Sensor",
+        "email": "a85608284@gmail.com",
+        "current_employment_zh": "晶元光電",
+        "current_employment_en": "EPISTAR",
+        "url": "images/member/林榮勝.jpg"
+    }
+]
