@@ -151,7 +151,7 @@ async function loadCurrentMembers() {
                             <p lang= "en"><strong>Research:</strong><br>${member.research_interests_en}</p>
                             <p><strong>Email:</strong> <a href="mailto:${member.email}">${member.email}</a></p>
                         </div>
-                        <div class="radar-chart">
+                        <div class="radar-chart" data-name="${member.name_zh}">
                             <img src="images/radar/${member.name_zh}.png" alt="雷達圖">
                         </div>
                     </div>
@@ -268,10 +268,10 @@ async function loadPapersWithCode() {
                         </div>
                         <div class="pub">
                             <div class="pubt">${paper.title}</div>
-                            <br>
+
                             <div class="pubg">${authorsHtml}</div>
                             <div class="pubd">${paper.description}</div>
-                            <div class="publ"><ul>${linksHtml}</ul></div>
+                            <div class="publ">${linksHtml}</div>
                         </div>
                     </div>
                 </div>
@@ -415,5 +415,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ✅ 預設載入首頁
 window.onload = () => {
-    loadSection('home');
+    loadSection('current-members');
 };
