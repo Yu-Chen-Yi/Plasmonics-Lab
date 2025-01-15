@@ -321,5 +321,24 @@
         "current_employment_zh": [],
         "current_employment_en": [],
         "url": "images/member/林逸翔.jpg"
+    },
+    {
+        "name_zh": "陳奕帆",
+        "name_en": "Chen,Yi-Fan",
+        "year_of_enrollment_zh": 110,
+        "year_of_enrollment_en": 2021,
+        "degree_zh": "大學生",
+        "degree_en": "Undergraduate Student",
+        "graduated": false,
+        "school_zh": "中央大學 光電系（就讀中）",
+        "school_en": "National Central University, Graduate Institute of Optical Sciences and Engineering",
+        "skills_zh": "Matlab",
+        "skills_en": "Matlab",
+        "research_interests_zh": "超穎透鏡量測",
+        "research_interests_en": "Metalens measurement",
+        "email": "yifan206518@g.ncu.edu.tw",
+        "current_employment_zh": [],
+        "current_employment_en": [],
+        "url": "images/member/陳奕帆.jpg"
     }
 ]
