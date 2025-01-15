@@ -151,9 +151,9 @@ async function loadCurrentMembers() {
                             <p lang= "en"><strong>Research:</strong><br>${member.research_interests_en}</p>
                             <p><strong>Email:</strong> <a href="mailto:${member.email}">${member.email}</a></p>
                         </div>
-                        <div class="radar-chart" data-name="${member.name_zh}">
-                            <img src="images/radar/${member.name_zh}.png" alt="雷達圖">
-                        </div>
+                        <!--<div class="radar-chart" data-name="${member.name_zh}">-->
+                            <!--<img src="images/radar/${member.name_zh}.png" alt="雷達圖">-->
+                        <!--</div>-->
                     </div>
                 `;
                 container.insertAdjacentHTML('beforeend', cardHTML);
@@ -200,9 +200,9 @@ async function loadFormerMembers() {
                         <p lang= "en"><strong>Research:</strong><br>${member.research_interests_en}</p>
                         <p><strong>Email:</strong> <a href="mailto:${member.email}">${member.email}</a></p>
                     </div>
-                    <div class="radar-chart">
-                        <img src="images/radar/${member.name_zh}.png" alt="雷達圖">
-                    </div>
+                    <!--<div class="radar-chart">-->
+                    <!--    <img src="images/radar/${member.name_zh}.png" alt="雷達圖">-->
+                    <!--</div>-->
                 </div>
             `;
             container.insertAdjacentHTML('beforeend', cardHTML);
