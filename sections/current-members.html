@@ -9,6 +9,27 @@
       </div>
     </section>
 </main>
+
+<script>
+    // 選取所有的 .radar-chart 元素
+    const radarCharts = document.querySelectorAll('.radar-chart');
+
+    radarCharts.forEach(chart => {
+        const imgElement = chart.querySelector('img');
+        const name = chart.getAttribute('data-name'); // 從 data-name 取得名字
+
+        // 監聽 hover 事件
+        imgElement.addEventListener('mouseover', () => {
+            imgElement.src = `images/member/${name}.jpg`;
+        });
+
+        // 監聽 mouseout 恢復原圖
+        imgElement.addEventListener('mouseout', () => {
+            imgElement.src = 'images/member/default.jpg';
+        });
+    });
+</script>
+
 <style>
   #members-container {
   display: flex;
@@ -27,8 +48,12 @@
       width: 200px !important;
       box-shadow: 0 0 10px #d4af7a;
       cursor: pointer;
-
   }
+
+  .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px #d4af7a;
+    }
 
   .profile {
       text-align: center !important;
@@ -45,6 +70,11 @@
       object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
       object-position: center; /* 確保圖片從中心裁剪 */
   }
+
+  .profile img:hover {
+        transform: translateY(5px);
+        box-shadow: 0 6px 12px #d4af7a;
+    }
 
   .profile p {
       text-align: left;
@@ -137,9 +167,16 @@
     }
 
   .radar-chart img {
-      max-width: 400px;
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
+    object-position: center; /* 確保圖片從中心裁剪 */
   }
-
+  .radar-chart img:hover {
+        box-shadow: 0 6px 12px #d4af7a;
+        /*content: url('images/member/余宸逸.jpg'); /* 更換圖片 */
+    }
   a {
       color: #4fd1c5;
       text-decoration: none;
@@ -191,7 +228,7 @@
       object-fit: cover; /* 使用 cover 保持圖片比例並裁剪 */
       object-position: center; /* 確保圖片從中心裁剪 */
   }
-
+  
   .profile p {
       text-align: left;
       font-size: 12px;
@@ -285,13 +322,17 @@
     margin-top: 0px;
     }
     .radar-chart img {
-    max-width: 200px;
-    margin-top: 20px;
+        border-radius: 50%;
+        max-width: 200px;
+        margin-top: 20px;
     }
-  a {
-      color: #4fd1c5;
-      text-decoration: none;
-  }
+    .radar-chart img:hover {
+        box-shadow: 0 6px 12px #d4af7a;
+    }
+    a {
+        color: #4fd1c5;
+        text-decoration: none;
+    }
 
   .close {
       position: absolute;
