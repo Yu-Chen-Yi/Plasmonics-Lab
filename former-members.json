@@ -36,5 +36,24 @@
         "current_employment_zh": "晶元光電",
         "current_employment_en": "EPISTAR",
         "url": "images/member/林榮勝.jpg"
+    },
+    {
+        "name_zh": "黃囿菘",
+        "name_en": "Huang, You-Song",
+        "year_of_enrollment_zh": 110,
+        "year_of_enrollment_en": 2021,
+        "degree_zh": "碩士生",
+        "degree_en": "Graduate Student",
+        "graduated": true,
+        "school_zh": "中央大學 光電所",
+        "school_en": "National Central University, Graduate Institute of Optical Sciences and Engineering",
+        "skills_zh": "Matlab、Lumerical、半導體製程",
+        "skills_en": "Matlab、Lumerical、Semi-conductor process",
+        "research_interests_zh": "超穎色彩路由器設計與優化、超穎透鏡設計與優化",
+        "research_interests_en": "Design and Optimization of Metasurface Color Routers, and Design and Optimization of Metasurface Lenses",
+        "email": "p6626274i28@gmail.com",
+        "current_employment_zh": "台塑石化",
+        "current_employment_en": "Formosa Petrochemical Corporation",
+        "url": "images/member/黃囿菘.jpg"
     }
 ]
