@@ -1,5 +1,24 @@
 [
     {
+        "name_zh": "劉光晏_test",
+        "name_en": "Liu, Guang-Yan",
+        "year_of_enrollment_zh": 108,
+        "year_of_enrollment_en": 2019,
+        "degree_zh": "碩士生",
+        "degree_en": "Graduate Student",
+        "graduated": true,
+        "school_zh": "陽明交通大學 照明與能源所",
+        "school_en": "National Chiao Tung University, Institute of Lighting and Energy Photonics",
+        "skills_zh": "Metalens, Zemax, Matlab",
+        "skills_en": "Metalens, Zemax, Matlab",
+        "research_interests_zh": "超穎透鏡設計與優化",
+        "research_interests_en": "Metalens system design",
+        "email": "a860714@gmail.com",
+        "current_employment_zh": "歐菲光",
+        "current_employment_en": "OFILM",
+        "url": "images/member/劉光晏.jpg"
+    },
+    {
         "name_zh": "劉光晏",
         "name_en": "Liu, Guang-Yan",
         "year_of_enrollment_zh": 108,
