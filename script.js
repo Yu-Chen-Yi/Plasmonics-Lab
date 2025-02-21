@@ -17,6 +17,24 @@ function updateLanguage(lang) {
     currentLang = lang;
     document.body.classList.remove('zh', 'en');
     document.body.classList.add(lang);
+
+    // 隱藏所有語言的圖片
+    document.querySelectorAll('img[lang]').forEach(img => {
+        img.style.display = 'none';
+    });
+
+    // 顯示當前語言的圖片
+    document.querySelectorAll(`img[lang="${lang}"]`).forEach(img => {
+        img.style.display = 'block';
+    });
+
+    // 更新所有可切換語言的圖片
+    document.querySelectorAll('.language-switchable-img').forEach(img => {
+        const newSrc = img.getAttribute(`data-img-${lang}`);
+        if (newSrc) {
+            img.src = newSrc;
+        }
+    });
 }
 
 // ✅ 載入區塊並執行特定函數
@@ -71,8 +89,10 @@ async function loadAdvisorProfessor() {
         const data = await response.json();
 
         // ✅ 處理多行教育與經歷
-        const educationList = data.education.map(line => `<li>${line}</li>`).join('');
-        const experienceList = data.experience.map(line => `<li>${line}</li>`).join('');
+        const educationListZh = data.education_zh.map(line => `<li lang="zh">${line}</li>`).join('');
+        const educationListEn = data.education_en.map(line => `<li lang="en">${line}</li>`).join('');
+        const experienceListZh = data.experience_zh.map(line => `<li lang="zh">${line}</li>`).join('');
+        const experienceListEn = data.experience_en.map(line => `<li lang="en">${line}</li>`).join('');
 
         // ✅ 動態生成 HTML
         const advisorHTML = `
@@ -85,16 +105,26 @@ async function loadAdvisorProfessor() {
                         <h2 class="leader-name">${data.name} <span class="leader-chinese-name">/ ${data.chinese_name}</span></h2>
                         
                         <!-- Education Section -->
-                        <h3>Education</h3>
-                        <ul>${educationList}</ul>
+                        <h3 lang="en">Education</h3>
+                        <h3 lang="zh">學歷</h3>
+                        <ul>
+                            ${educationListZh}
+                            ${educationListEn}
+                        </ul>
                         
                         <!-- Experience Section -->
-                        <h3>Experience</h3>
-                        <ul>${experienceList}</ul>
+                        <h3 lang="en">Experience</h3>
+                        <h3 lang="zh">經歷</h3>
+                        <ul>
+                            ${experienceListZh}
+                            ${experienceListEn}
+                        </ul>
                         
                         <!-- Research Areas -->
-                        <h3>Research</h3>
-                        <p>${data.research}</p>
+                        <h3 lang="en">Research</h3>
+                        <h3 lang="zh">研究領域</h3>
+                        <p lang="zh">${data.research_zh}</p>
+                        <p lang="en">${data.research_en}</p>
                         
                         <!-- Contact Information -->
                         <p>Email: <a href="mailto:${data.email}">${data.email}</a></p>
@@ -403,17 +433,26 @@ window.addEventListener('keydown', function(event) {
 
 // ✅ 綁定導覽列的點擊事件，並動態載入對應頁面
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[data-section]').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const sectionName = this.getAttribute('data-section');
-            loadSection(sectionName);
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();  // 防止頁面跳轉
+            const sectionName = link.getAttribute('data-section'); // 讀取 data-section 屬性
+
+            // 如果點擊的是研究按鈕，自動跳轉到超穎光學頁面
+            if (sectionName === 'research') {
+                loadSection('meta-optics');
+            } else {
+                loadSection(sectionName); // 載入對應頁面
+            }
+
+            navMenu.classList.remove('active'); // 自動關閉選單
+            hamburger.textContent = '☰'; // 恢復漢堡圖示
         });
     });
 });
-
 
 // ✅ 預設載入首頁
 window.onload = () => {
     loadSection('home');
 };
+
