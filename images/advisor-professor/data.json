@@ -1,17 +1,29 @@
 {
     "name": "CHIH-MING WANG",
     "chinese_name": "王智明",
-    "education": [
+    "education_en": [
         "1994-1998 B.S. in Chemical Engineering, National Central University, Taiwan",
         "1998-2000 M.S. in Optics and Photonics, National Central University, Taiwan",
         "2002-2006 Ph.D. in Optics and Photonics, National Central University, Taiwan"
     ],
-    "experience": [
+    "education_zh": [
+        "學士（B.S.），國立中央大學化學工程學系（1994–1998）",
+        "碩士（M.S.），國立中央大學光電科學與工程研究所（1998–2000）",
+        "博士（Ph.D.），國立中央大學光電科學與工程研究所（2002–2006）"
+    ],
+    "experience_en": [
         "2006-2008 Postdoctoral Researcher, Department of Physics, National Taiwan University",
         "2008-2015 Assistant Professor, Department of Physics, National Dong Hwa University",
         "2015-Present Professor and Associate Professor, Department of Optics and Photonics, National Central University; currently serving as Associate Chair and Director of the In-Service Master's Program"
     ],
-    "research": "Nano-Optical Systems; Plasmonics; Metamaterial Applications",
+    "experience_zh": [
+        "博士後研究員，國立臺灣大學物理學系（2006–2008）",
+        "助理教授，國立東華大學物理學系（2008–2015）",
+        "副教授、教授，國立中央大學光電科學與工程學系（2015–至今）",
+        "現任副系主任及在職專班主任"
+    ],
+    "research_en": "Nano-Optical Systems; Plasmonics; Metamaterial Applications",
+    "research_zh": "奈米光學系統；電漿子學（Plasmonics）；超穎材料應用",
     "email": "cmwang@dop.ncu.edu.tw",
     "google_scholar": "https://scholar.google.com.hk/citations?user=IADxGEYAAAAJ"
 }
